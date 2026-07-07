@@ -946,8 +946,12 @@
         style="border-radius:8px; margin-bottom:14px; display:block;">
         Loading…
       </iframe>
+      <label style="display:flex;align-items:center;gap:10px;margin-bottom:14px;cursor:pointer;user-select:none;">
+        <input type="checkbox" id="agreeCheck" onchange="toggleDoneBtn()" style="width:16px;height:16px;accent-color:#4ade80;cursor:pointer;flex-shrink:0;">
+        <span style="font-size:12px;color:#94a3b8;">I confirm I have filled in and submitted the form above</span>
+      </label>
       <div class="agree-actions">
-        <button class="agree-submit" onclick="doneAgreement()">✅ Done — I've submitted</button>
+        <button class="agree-submit" id="agreeDoneBtn" onclick="doneAgreement()" disabled style="opacity:0.35;cursor:not-allowed;">✅ Done — I've submitted</button>
         <button class="agree-cancel-btn" onclick="closeAgreeModal()">Cancel</button>
       </div>
     </div>
@@ -1037,7 +1041,20 @@
     }
 
     function openAgreeModal() {
+      document.getElementById('agreeCheck').checked = false;
+      const btn = document.getElementById('agreeDoneBtn');
+      btn.disabled = true;
+      btn.style.opacity = '0.35';
+      btn.style.cursor = 'not-allowed';
       document.getElementById('agreeOverlay').classList.add('show');
+    }
+
+    function toggleDoneBtn() {
+      const checked = document.getElementById('agreeCheck').checked;
+      const btn = document.getElementById('agreeDoneBtn');
+      btn.disabled = !checked;
+      btn.style.opacity = checked ? '1' : '0.35';
+      btn.style.cursor = checked ? 'pointer' : 'not-allowed';
     }
 
     function closeAgreeModal() {
