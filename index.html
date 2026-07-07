@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bybit Vendor Registration — AFPRT / PID Activation</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #0f1117;
+      color: #e2e8f0;
+      padding: 0 0 64px;
+      min-width: 960px;
+    }
+
+    a { color: #60a5fa; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── HEADER ── */
+    .site-header {
+      background: linear-gradient(135deg, #0f1117 0%, #1a1f2e 100%);
+      border-bottom: 1px solid #1e293b;
+      padding: 20px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo-area { display: flex; align-items: center; gap: 14px; }
+    .logo-mark {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 900; color: #fff;
+    }
+    .logo-text { font-size: 16px; font-weight: 700; color: #f8fafc; }
+    .logo-sub  { font-size: 11px; color: #64748b; margin-top: 1px; }
+    .header-badge {
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      background: #1e293b; border: 1px solid #334155;
+      color: #94a3b8; padding: 5px 12px; border-radius: 20px;
+    }
+
+    /* ── PROGRESS BAR ── */
+    .progress-bar {
+      background: #0d1117;
+      border-bottom: 1px solid #1e293b;
+      padding: 0 48px;
+      display: flex; overflow-x: auto;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .prog-step {
+      display: flex; align-items: center; gap: 0;
+      padding: 14px 0; flex-shrink: 0;
+    }
+    .prog-step:last-child .prog-arrow { display: none; }
+    .prog-btn {
+      display: flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border-radius: 20px;
+      font-size: 11px; font-weight: 600; cursor: pointer;
+      border: none; background: transparent; color: #475569;
+      transition: all 0.15s;
+    }
+    .prog-btn:hover { color: #94a3b8; }
+    .prog-btn.active { background: #162d4a; color: #93c5fd; }
+    .prog-btn.done   { color: #4ade80; }
+    .prog-num {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: #1e293b; display: flex; align-items: center;
+      justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0;
+    }
+    .prog-btn.active .prog-num { background: #3b82f6; color: #fff; }
+    .prog-btn.done   .prog-num { background: #166534; color: #4ade80; }
+    .prog-arrow { color: #334155; font-size: 14px; padding: 0 6px; }
+
+    /* ── MAIN LAYOUT ── */
+    .main { max-width: 820px; margin: 0 auto; padding: 36px 24px 0; }
+
+    /* ── SECTION CARD ── */
+    .sec-card {
+      background: #131b2e; border: 1px solid #1e293b;
+      border-radius: 14px; padding: 24px 28px; margin-bottom: 20px;
+    }
+    .sec-header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 18px;
+    }
+    .sec-num {
+      width: 30px; height: 30px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; flex-shrink: 0;
+    }
+    .sec-title { font-size: 15px; font-weight: 700; color: #f8fafc; }
+    .sec-sub   { font-size: 12px; color: #64748b; margin-top: 2px; }
+
+    .n1 { background: #3b82f6; color: #fff; }
+    .n2 { background: #f59e0b; color: #fff; }
+    .n3 { background: #a855f7; color: #fff; }
+    .n4 { background: #f97316; color: #fff; }
+    .n5 { background: #22c55e; color: #fff; }
+    .n6 { background: #0ea5e9; color: #fff; }
+    .n7 { background: #ef4444; color: #fff; }
+
+    /* ── GOAL CARDS ── */
+    .goal-row { display: flex; gap: 12px; margin-bottom: 14px; }
+    .goal-card { flex: 1; border-radius: 10px; padding: 14px 16px; }
+    .gc-green  { background: #052e16; border: 1.5px solid #166534; }
+    .gc-amber  { background: #1c1205; border: 1.5px solid #92400e; }
+    .gc-red    { background: #1a0808; border: 1.5px solid #991b1b; }
+    .goal-card .gc-badge {
+      font-size: 9px; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.8px; padding: 2px 8px; border-radius: 20px;
+      display: inline-block; margin-bottom: 6px;
+    }
+    .gc-green .gc-badge { background: #052e16; border: 1px solid #166534; color: #4ade80; }
+    .gc-amber .gc-badge { background: #1c1205; border: 1px solid #92400e; color: #fcd34d; }
+    .gc-red   .gc-badge { background: #1a0808; border: 1px solid #991b1b; color: #fca5a5; }
+    .goal-card .gc-title { font-size: 12px; font-weight: 700; margin-bottom: 6px; }
+    .gc-green .gc-title { color: #4ade80; }
+    .gc-amber .gc-title { color: #fcd34d; }
+    .gc-red   .gc-title { color: #fca5a5; }
+    .goal-card .gc-body  { font-size: 11px; line-height: 1.7; color: #94a3b8; }
+    .goal-note {
+      background: #0d1825; border: 1px solid #1e3a5f;
+      border-radius: 8px; padding: 12px 14px; font-size: 11px;
+      color: #94a3b8; line-height: 1.7;
+    }
+    .goal-note strong { color: #e2e8f0; }
+
+    /* ── CONFIRM LIST ── */
+    .confirm-list { display: flex; flex-direction: column; gap: 10px; }
+    .confirm-item {
+      background: #0d1825; border: 1px solid #1e293b;
+      border-radius: 10px; padding: 14px 16px;
+    }
+    .confirm-item.required { border-color: #7c3aed; background: #130820; }
+    .ci-head {
+      display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px;
+    }
+    .ci-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .ci-title { font-size: 12px; font-weight: 700; color: #e2e8f0; }
+    .ci-body { font-size: 11px; color: #94a3b8; line-height: 1.7; padding-left: 26px; }
+    .ci-body ul { padding-left: 16px; margin-top: 4px; }
+    .ci-body li { margin-bottom: 2px; }
+    .ci-ack {
+      margin-top: 10px; padding-left: 26px;
+      display: flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 600; color: #a78bfa; cursor: pointer;
+    }
+    .ci-ack input[type=checkbox] { accent-color: #7c3aed; width: 14px; height: 14px; cursor: pointer; }
+
+    /* ── IO DOC TABLE ── */
+    .io-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .io-table th {
+      background: #0d1825; color: #64748b; font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.6px;
+      padding: 10px 14px; text-align: left; border-bottom: 1px solid #1e293b;
+    }
+    .io-table td { padding: 10px 14px; border-bottom: 1px solid #1e293b; color: #94a3b8; }
+    .io-table tr:last-child td { border-bottom: none; }
+    .io-table tr:hover td { background: #0d1825; }
+
+    /* ── APPSFLYER CARDS ── */
+    .af-row { display: flex; gap: 12px; }
+    .af-card {
+      flex: 1; border-radius: 10px; padding: 16px;
+      background: #0d1825; border: 1.5px solid #1e3a5f;
+    }
+    .af-card.recommended { border-color: #3b82f6; background: #0a1827; }
+    .af-badge {
+      font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 2px 8px; border-radius: 20px; display: inline-block; margin-bottom: 8px;
+    }
+    .af-badge.rec { background: #162d4a; border: 1px solid #3b82f6; color: #93c5fd; }
+    .af-badge.std { background: #1e293b; border: 1px solid #334155; color: #94a3b8; }
+    .af-title { font-size: 13px; font-weight: 700; color: #f8fafc; margin-bottom: 8px; }
+    .af-card ul { list-style: none; font-size: 11px; color: #94a3b8; line-height: 1.8; }
+    .af-card ul li::before { content: '→ '; color: #3b82f6; }
+    .af-warn {
+      margin-top: 12px; background: #1a0808; border: 1px solid #7f1d1d;
+      border-radius: 6px; padding: 8px 12px; font-size: 11px; color: #fca5a5; line-height: 1.6;
+    }
+
+    /* ── FORM ── */
+    .form-card {
+      background: #0d1117; border: 1.5px solid #1e3a5f;
+      border-radius: 14px; padding: 28px 28px;
+    }
+    .form-title { font-size: 17px; font-weight: 700; color: #f8fafc; margin-bottom: 4px; }
+    .form-sub   { font-size: 12px; color: #64748b; margin-bottom: 24px; }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      margin-top: 40px; padding: 16px 48px;
+      border-top: 1px solid #1e293b;
+      display: flex; justify-content: space-between;
+    }
+    .footer-left  { font-size: 11px; color: #475569; }
+    .footer-right { font-size: 11px; color: #334155; }
+
+    .divider { height: 1px; background: #1e293b; margin: 6px 0 16px; }
+
+    .restricted-wrap {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px;
+    }
+    .restricted-tag {
+      background: #1a0808; border: 1px solid #7f1d1d;
+      color: #fca5a5; font-size: 10px; font-weight: 700;
+      padding: 3px 10px; border-radius: 20px;
+    }
+
+    /* ── PASSWORD OVERLAY ── */
+    .pw-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.75); backdrop-filter: blur(4px);
+      z-index: 999; align-items: center; justify-content: center;
+    }
+    .pw-overlay.show { display: flex; }
+    .pw-box {
+      background: #131b2e; border: 1px solid #334155;
+      border-radius: 14px; padding: 32px 36px; width: 320px;
+      text-align: center;
+    }
+    .pw-icon { font-size: 32px; margin-bottom: 12px; }
+    .pw-title { font-size: 15px; font-weight: 700; color: #f8fafc; margin-bottom: 4px; }
+    .pw-sub { font-size: 11px; color: #64748b; margin-bottom: 20px; }
+    .pw-input {
+      width: 100%; background: #0f1117; border: 1px solid #334155;
+      border-radius: 8px; padding: 10px 14px; color: #e2e8f0;
+      font-size: 14px; font-family: inherit; outline: none;
+      text-align: center; letter-spacing: 4px; margin-bottom: 8px;
+      transition: border-color 0.15s;
+    }
+    .pw-input:focus { border-color: #3b82f6; }
+    .pw-input.error { border-color: #ef4444; animation: shake 0.3s; }
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
+    .pw-err { font-size: 11px; color: #fca5a5; height: 16px; margin-bottom: 12px; }
+    .pw-btn {
+      width: 100%; padding: 10px;
+      background: linear-gradient(135deg, #3b82f6, #6366f1);
+      border: none; border-radius: 8px; color: #fff;
+      font-size: 13px; font-weight: 700; cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .pw-btn:hover { opacity: 0.9; }
+    .pw-cancel {
+      margin-top: 10px; background: none; border: none;
+      color: #475569; font-size: 11px; cursor: pointer;
+    }
+    .pw-cancel:hover { color: #94a3b8; }
+
+    /* ── SUMMARY SECTION ── */
+    #secSummary { display: none; border-color: #334155; }
+    #secSummary.visible { display: block; }
+    .sum-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+    .sum-block {
+      background: #0d1825; border: 1px solid #1e293b;
+      border-radius: 10px; padding: 14px 16px;
+    }
+    .sum-block-title {
+      font-size: 10px; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.8px; color: #64748b; margin-bottom: 10px;
+    }
+    .sum-row { display: flex; gap: 8px; margin-bottom: 6px; font-size: 11px; line-height: 1.5; }
+    .sum-row:last-child { margin-bottom: 0; }
+    .sum-label { color: #475569; flex-shrink: 0; width: 90px; }
+    .sum-val { color: #94a3b8; word-break: break-all; }
+    .sum-val a { color: #60a5fa; }
+    .sum-section-list { list-style: none; }
+    .sum-section-list li {
+      display: flex; gap: 10px; padding: 8px 0;
+      border-bottom: 1px solid #1e293b; font-size: 11px; line-height: 1.6;
+    }
+    .sum-section-list li:last-child { border-bottom: none; }
+    .sum-sec-num {
+      width: 20px; height: 20px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px; font-weight: 800; flex-shrink: 0; margin-top: 1px;
+    }
+    .sum-sec-body { color: #94a3b8; }
+    .sum-sec-body strong { color: #cbd5e1; }
+    .history-list { list-style: none; }
+    .history-list li {
+      display: flex; gap: 10px; padding: 8px 0;
+      border-bottom: 1px solid #1e293b; font-size: 11px; line-height: 1.6;
+    }
+    .history-list li:last-child { border-bottom: none; }
+    .history-date { color: #475569; flex-shrink: 0; width: 80px; }
+    .history-entry { color: #94a3b8; }
+
+    /* ── SCROLL LOCK ── */
+    .sec-locked {
+      opacity: 0.25;
+      pointer-events: none;
+      user-select: none;
+      filter: blur(1.5px);
+    }
+    .sec3-barrier {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      margin-bottom: 20px; padding: 14px 20px;
+      background: #1a0808; border: 1px dashed #7f1d1d;
+      border-radius: 10px; font-size: 12px; font-weight: 600; color: #fca5a5;
+    }
+    .sec3-barrier.unlocked { display: none; }
+
+    @keyframes flashGreen {
+      0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+      40%  { box-shadow: 0 0 0 6px rgba(34,197,94,0.55); }
+      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+    }
+    .btn-agree.flash { animation: flashGreen 0.7s ease; }
+
+    /* ── AGREE BUTTON ── */
+    .btn-agree {
+      width: 100%; margin-top: 18px; padding: 13px;
+      background: linear-gradient(135deg, #166534, #15803d);
+      border: none; border-radius: 10px; color: #fff;
+      font-size: 13px; font-weight: 700; cursor: pointer;
+      transition: opacity 0.15s; letter-spacing: 0.3px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-agree:hover { opacity: 0.88; }
+
+    /* ── AGREE MODAL ── */
+    .agree-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.75); backdrop-filter: blur(4px);
+      z-index: 998; align-items: center; justify-content: center;
+    }
+    .agree-overlay.show { display: flex; }
+    .agree-box {
+      background: #131b2e; border: 1px solid #334155;
+      border-radius: 14px; padding: 24px 28px; width: 540px;
+    }
+    .agree-box-title { font-size: 16px; font-weight: 700; color: #f8fafc; margin-bottom: 4px; }
+    .agree-box-sub { font-size: 11px; color: #64748b; margin-bottom: 16px; line-height: 1.6; }
+    .agree-actions { display: flex; gap: 10px; }
+    .agree-submit {
+      flex: 1; padding: 11px;
+      background: linear-gradient(135deg, #166534, #15803d);
+      border: none; border-radius: 8px; color: #fff;
+      font-size: 13px; font-weight: 700; cursor: pointer; transition: opacity 0.15s;
+    }
+    .agree-submit:hover { opacity: 0.88; }
+    .agree-cancel-btn {
+      padding: 11px 18px; background: transparent;
+      border: 1px solid #334155; border-radius: 8px;
+      color: #64748b; font-size: 13px; cursor: pointer; transition: all 0.15s;
+    }
+    .agree-cancel-btn:hover { border-color: #64748b; color: #94a3b8; }
+
+    /* ── AGREEMENT CONFIRMED CARD ── */
+    .agree-confirmed {
+      display: none; margin-top: 16px;
+      background: #052e16; border: 1.5px solid #166534;
+      border-radius: 10px; padding: 16px 18px;
+    }
+    .agree-confirmed.show { display: block; }
+    .agree-confirmed-head {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 700; color: #4ade80; margin-bottom: 12px;
+    }
+    .agree-confirmed-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    }
+    .agree-confirmed-cell {
+      background: #071f0f; border: 1px solid #166534;
+      border-radius: 8px; padding: 10px 14px;
+    }
+    .agree-confirmed-cell .cell-label {
+      font-size: 9px; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.7px; color: #166534; margin-bottom: 4px;
+    }
+    .agree-confirmed-cell .cell-val {
+      font-size: 12px; color: #4ade80; font-weight: 600; word-break: break-all;
+    }
+
+    /* ── PRE-FILL REMINDER ── */
+    .prefill-box {
+      background: #071f0f; border: 1.5px solid #166534;
+      border-radius: 10px; padding: 14px 16px; margin-bottom: 16px;
+    }
+    .prefill-title {
+      font-size: 11px; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.7px; color: #4ade80; margin-bottom: 10px;
+    }
+    .prefill-row {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 7px; font-size: 12px;
+    }
+    .prefill-row:last-child { margin-bottom: 0; }
+    .prefill-key { color: #475569; width: 110px; flex-shrink: 0; }
+    .prefill-val { color: #e2e8f0; font-weight: 600; flex: 1; }
+    .copy-btn {
+      background: #0f2b1c; border: 1px solid #166534; color: #4ade80;
+      border-radius: 6px; padding: 3px 10px; font-size: 10px; font-weight: 700;
+      cursor: pointer; transition: all 0.15s; white-space: nowrap; flex-shrink: 0;
+    }
+    .copy-btn:hover { background: #166534; }
+    .copy-btn.copied { background: #166534; color: #fff; }
+
+    /* ── LOCK BUTTON ── */
+    .lock-btn {
+      background: none; border: none; cursor: pointer;
+      color: #334155; font-size: 13px; padding: 0; transition: color 0.15s;
+    }
+    .lock-btn:hover { color: #64748b; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="site-header">
+    <div class="logo-area">
+      <div class="logo-mark">B</div>
+      <div>
+        <div class="logo-text">Bybit Vendor Registration</div>
+        <div class="logo-sub">AFPRT / PID Activation · CPA Model · AppsFlyer</div>
+      </div>
+    </div>
+    <div class="header-badge">EXTERNAL · PARTNER USE ONLY</div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-bar">
+    <div class="prog-step">
+      <button class="prog-btn active" onclick="scrollTo('sec1')">
+        <span class="prog-num">1</span> Campaign Goals
+      </button>
+      <span class="prog-arrow">›</span>
+    </div>
+    <div class="prog-step">
+      <button class="prog-btn" onclick="scrollTo('sec2')">
+        <span class="prog-num">2</span> IO &amp; TnC
+      </button>
+      <span class="prog-arrow">›</span>
+    </div>
+    <div class="prog-step">
+      <button class="prog-btn" onclick="scrollTo('sec3')">
+        <span class="prog-num">3</span> Key Confirmations
+      </button>
+      <span class="prog-arrow">›</span>
+    </div>
+    <div class="prog-step">
+      <button class="prog-btn" onclick="scrollTo('sec4')">
+        <span class="prog-num">4</span> Payout Price
+      </button>
+      <span class="prog-arrow">›</span>
+    </div>
+    <div class="prog-step">
+      <button class="prog-btn" onclick="scrollTo('sec5')">
+        <span class="prog-num">5</span> IO Documents
+      </button>
+      <span class="prog-arrow">›</span>
+    </div>
+    <div class="prog-step">
+      <button class="prog-btn" onclick="scrollTo('sec6')">
+        <span class="prog-num">6</span> AppsFlyer Setup
+      </button>
+      <span class="prog-arrow">›</span>
+    </div>
+    <div class="prog-step">
+      <button class="prog-btn" onclick="scrollTo('sec7')">
+        <span class="prog-num">7</span> Submit Registration
+      </button>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <!-- ── SECTION 1: CAMPAIGN GOALS ── -->
+    <div class="sec-card" id="sec1">
+      <div class="sec-header">
+        <span class="sec-num n1">1</span>
+        <div>
+          <div class="sec-title">What Bybit is Looking For</div>
+          <div class="sec-sub">Review campaign goals before proceeding</div>
+        </div>
+      </div>
+
+      <div class="goal-row">
+        <div class="goal-card gc-green">
+          <span class="gc-badge">Preferred</span>
+          <div class="gc-title">✅ eFTT Buy</div>
+          <div class="gc-body">Users deposit ≥ $100 (eFTD) and make their first trade (eFTT). This is Bybit's primary revenue event — trading fees are only earned when users trade. Agreeing to eFTT will fast-track your onboarding.</div>
+        </div>
+        <div class="goal-card gc-amber">
+          <span class="gc-badge">Conditional</span>
+          <div class="gc-title">⚠️ eFTD Buy</div>
+          <div class="gc-body">Deposit ≥ $100 within 14 days of sign-up. Accepted with additional TnC agreement. Note: eFTD alone generates no revenue for Bybit until the user goes on to trade.</div>
+        </div>
+        <div class="goal-card gc-red">
+          <span class="gc-badge">Not Recommended</span>
+          <div class="gc-title">❌ CPM / CPC / CPI / Signup</div>
+          <div class="gc-body">Based on historical data these buy types do not perform to Bybit's ROI expectations and are not recommended. Campaigns under these models are unlikely to be approved.</div>
+        </div>
+      </div>
+
+      <div class="goal-note">
+        <strong>Bybit's core principle:</strong> We evaluate ROI on every vendor investment. If eFTDs are not trading, or trading below payout levels, that traffic is classified as <strong>less valid or invalid</strong>. We are exclusively targeting high-quality users who deposit <em>and</em> trade.
+      </div>
+    </div>
+
+    <!-- ── SECTION 2: IO & TNC ── -->
+    <div class="sec-card" id="sec2">
+      <div class="sec-header">
+        <span class="sec-num n2">2</span>
+        <div>
+          <div class="sec-title">IO &amp; Setup Requirements</div>
+          <div class="sec-sub">Please review and confirm before proceeding</div>
+        </div>
+      </div>
+
+      <div class="confirm-list">
+        <div class="confirm-item">
+          <div class="ci-head">
+            <span class="ci-icon">📄</span>
+            <div class="ci-title">Complete and sign the IO</div>
+          </div>
+          <div class="ci-body">Download the relevant IO document from Section 4 below (based on your region and payment method), complete and sign it, then share the signed copy to <a href="mailto:gx.lim@bybit.com">gx.lim@bybit.com</a>. Allow 2–3 weeks for the counter-signed copy to be returned.</div>
+        </div>
+        <div class="confirm-item">
+          <div class="ci-head">
+            <span class="ci-icon">✅</span>
+            <div class="ci-title">Confirm whether campaign can proceed before IO is fully countersigned</div>
+          </div>
+          <div class="ci-body">Let us know if you are willing to start campaign setup in parallel with the IO signing process.</div>
+        </div>
+        <div class="confirm-item">
+          <div class="ci-head">
+            <span class="ci-icon">🏢</span>
+            <div class="ci-title">Share your advertiser name for AppsFlyer</div>
+          </div>
+          <div class="ci-body">Provide the advertiser name(s) to be used in AppsFlyer. Multiple agencies or ad networks are acceptable.</div>
+        </div>
+        <div class="confirm-item">
+          <div class="ci-head">
+            <span class="ci-icon">🔗</span>
+            <div class="ci-title">Confirm agency or ad network setup</div>
+          </div>
+          <div class="ci-body">If running under an <strong>agency</strong> setup: please share the attribution link with us. If running as an <strong>ad network</strong>: confirm and we will proceed accordingly.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SECTION 3: KEY CONFIRMATIONS ── -->
+    <div class="sec-card" id="sec3">
+      <div class="sec-header">
+        <span class="sec-num n3">3</span>
+        <div>
+          <div class="sec-title">Key Points for Confirmation</div>
+          <div class="sec-sub">All points must be acknowledged before onboarding</div>
+        </div>
+      </div>
+
+      <div class="confirm-list">
+
+        <div class="confirm-item required">
+          <div class="ci-head">
+            <span class="ci-icon">🔐</span>
+            <div class="ci-title">PID Requirement — Macro String</div>
+          </div>
+          <div class="ci-body">
+            Before launching any campaign, a macro string <strong>must</strong> be appended to the PID (VTA/CTA). Bybit will provide standardized template links for you to apply the macro directly.<br/><br/>
+            <strong style="color:#fca5a5;">⚠️ Any PID running links not aligned with our required format will result in eFTDs not being billable.</strong>
+          </div>
+        </div>
+
+        <div class="confirm-item required">
+          <div class="ci-head">
+            <span class="ci-icon">🛡️</span>
+            <div class="ci-title">Fraud Policy</div>
+          </div>
+          <div class="ci-body">
+            Our internal risk team flags fraudulent users based on abnormal behaviours at the eFTD level, including but not limited to:
+            <ul>
+              <li>Use of externally purchased KYC services</li>
+              <li>Multiple fake or emulated devices abusing reward mechanisms</li>
+              <li>High eFTD volume with no subsequent trading activity</li>
+            </ul>
+            Such users will be classified as invalid and excluded from billing. A consolidated fraud report is shared at the end of each month and applies to all vendors.
+          </div>
+        </div>
+
+        <div class="confirm-item required">
+          <div class="ci-head">
+            <span class="ci-icon">🚀</span>
+            <div class="ci-title">Campaign Briefing &amp; Launch Flow</div>
+          </div>
+          <div class="ci-body">
+            Campaign assets (budget, creatives, tracking links) will be shared via email. <strong>Do not launch any campaign without prior written confirmation from Bybit.</strong><br/><br/>
+            All tracking links must be adjusted to match our internal attribution requirements. Do not run unmodified links or remove existing parameters.
+            <br/><br/><strong style="color:#fca5a5;">Non-compliance may result in eFTDs being deemed invalid and non-billable.</strong>
+          </div>
+        </div>
+
+        <div class="confirm-item required">
+          <div class="ci-head">
+            <span class="ci-icon">🌍</span>
+            <div class="ci-title">Restricted Markets</div>
+          </div>
+          <div class="ci-body">
+            Advertising is <strong>not permitted</strong> in the following countries:
+            <div class="restricted-wrap">
+              <span class="restricted-tag">Singapore</span>
+              <span class="restricted-tag">Malaysia</span>
+              <span class="restricted-tag">Thailand</span>
+              <span class="restricted-tag">Philippines</span>
+              <span class="restricted-tag">Canada</span>
+              <span class="restricted-tag">Australia</span>
+              <span class="restricted-tag">New Zealand</span>
+              <span class="restricted-tag">France</span>
+              <span class="restricted-tag">United States</span>
+              <span class="restricted-tag">Uzbekistan</span>
+              <span class="restricted-tag">Indonesia</span>
+              <span class="restricted-tag">Hong Kong</span>
+              <span class="restricted-tag">Japan</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="confirm-item required">
+          <div class="ci-head">
+            <span class="ci-icon">💳</span>
+            <div class="ci-title">Billing Validation</div>
+          </div>
+          <div class="ci-body">
+            Bybit validates and pays <strong>only</strong> for eFTDs reflected in the raw report that meet both conditions:
+            <ul>
+              <li><strong>IS Primary Attribution = TRUE</strong></li>
+              <li><strong>Retargeting = NO</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="confirm-item required">
+          <div class="ci-head">
+            <span class="ci-icon">📊</span>
+            <div class="ci-title">Attribution Rules</div>
+          </div>
+          <div class="ci-body">
+            <strong>Signup:</strong> First-touch attribution<br/>
+            <strong>eFTD:</strong> Last-click attribution<br/>
+            <strong>eFTT:</strong> Last-click attribution<br/><br/>
+            Once a user signs up under your account or campaign ID, the signup remains attributed to you. Other vendors cannot hijack or redirect this data to claim the eFTD.
+          </div>
+        </div>
+
+      </div>
+
+      <button class="btn-agree" onclick="openAgreeModal()">
+        ✅ I have read and agree to all the above terms
+      </button>
+
+      <div class="agree-confirmed" id="agreeConfirmed">
+        <div class="agree-confirmed-head">✅ Agreement Confirmed</div>
+        <div class="agree-confirmed-grid" style="grid-template-columns:1fr;">
+          <div class="agree-confirmed-cell">
+            <div class="cell-label">Agreed At</div>
+            <div class="cell-val" id="confirmedDate">—</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SCROLL BARRIER -->
+    <div class="sec3-barrier" id="sec3-barrier">
+      🔒 Please agree to the terms in Section 3 to continue
+    </div>
+
+    <!-- ── SECTION 4: PAYOUT PRICE ── -->
+    <div class="sec-card sec-locked" id="sec4">
+      <div class="sec-header">
+        <span class="sec-num n4">4</span>
+        <div>
+          <div class="sec-title">Payout Price</div>
+          <div class="sec-sub">CPA payouts by region — confirm your App type before proceeding</div>
+        </div>
+      </div>
+      <div style="background:#1a0808;border:1px solid #7f1d1d;border-radius:8px;padding:10px 14px;margin-bottom:16px;font-size:11px;color:#fca5a5;line-height:1.6;">
+        ⚠️ <strong>The "App" column refers to the AppsFlyer app setting (BYBIT or EU).</strong> If conversions are attributed to the wrong AppsFlyer app, Finance will not proceed with payment.
+      </div>
+      <table class="io-table">
+        <thead>
+          <tr>
+            <th>Region</th>
+            <th>App</th>
+            <th style="color:#93c5fd;">eFTD Payout</th>
+            <th style="color:#4ade80;">eFTT Payout</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Africa</td><td>BYBIT</td><td>$5.00</td><td>$5</td></tr>
+          <tr><td>Bahrain</td><td>BYBIT</td><td>$5.00</td><td>—</td></tr>
+          <tr><td>Brazil</td><td>BYBIT</td><td>$5.00</td><td>$10</td></tr>
+          <tr><td>CIS</td><td>BYBIT</td><td>$19.84</td><td>$50</td></tr>
+          <tr><td>Czech &amp; Slovak</td><td>EU</td><td>$7.23</td><td>—</td></tr>
+          <tr><td>France</td><td>EU</td><td>$3.31</td><td>—</td></tr>
+          <tr><td>Georgia</td><td>BYBIT</td><td>$8.49</td><td>—</td></tr>
+          <tr><td>Germany</td><td>EU</td><td>$0.66</td><td>—</td></tr>
+          <tr><td>India</td><td>BYBIT</td><td>$8.19</td><td>$10</td></tr>
+          <tr><td>Italy</td><td>EU</td><td>$1.17</td><td>—</td></tr>
+          <tr><td>Kazakhstan</td><td>BYBIT</td><td>$7.92</td><td>$50</td></tr>
+          <tr><td>Korea</td><td>BYBIT</td><td>$85.02</td><td>$160</td></tr>
+          <tr><td>Latam</td><td>BYBIT</td><td>$8.18</td><td>—</td></tr>
+          <tr><td>Mandarin</td><td>BYBIT</td><td>$83.62</td><td>$50</td></tr>
+          <tr><td>MENA</td><td>BYBIT</td><td>$22.40</td><td>$45</td></tr>
+          <tr><td>Mini-EU</td><td>EU</td><td>$1.29</td><td>—</td></tr>
+          <tr><td>Mini-Global</td><td>BYBIT</td><td>$107.91</td><td>—</td></tr>
+          <tr><td>Netherlands</td><td>EU</td><td>$4.80</td><td>—</td></tr>
+          <tr><td>Nordics</td><td>EU</td><td>$0.70</td><td>—</td></tr>
+          <tr><td>Pakistan</td><td>BYBIT</td><td>$18.15</td><td>$20</td></tr>
+          <tr><td>Poland</td><td>EU</td><td>$5.88</td><td>—</td></tr>
+          <tr><td>Portugal</td><td>EU</td><td>$0.50</td><td>—</td></tr>
+          <tr><td>SEA</td><td>BYBIT</td><td>$41.32</td><td>—</td></tr>
+          <tr><td>Spain</td><td>EU</td><td>$3.18</td><td>—</td></tr>
+          <tr><td>Turkey</td><td>BYBIT</td><td>$41.07</td><td>$35</td></tr>
+          <tr><td>United Kingdom</td><td>BYBIT</td><td>$0.28</td><td>—</td></tr>
+          <tr><td>Vietnam</td><td>BYBIT</td><td>$32.46</td><td>$60</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ── SECTION 5: IO DOCUMENTS ── -->
+    <div class="sec-card sec-locked" id="sec5">
+      <div class="sec-header">
+        <span class="sec-num n5">5</span>
+        <div>
+          <div class="sec-title">IO Documents</div>
+          <div class="sec-sub">Download the correct IO based on your region and payment method</div>
+        </div>
+      </div>
+      <table class="io-table">
+        <thead>
+          <tr>
+            <th>Region</th>
+            <th>Payment Method</th>
+            <th>Document</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Global Region</td>
+            <td>Bank Payment</td>
+            <td><a href="https://io-template-download-qa.auto-ai-eks-ingress.ai-pub-devtest.ww5sawfyut0k.bitsvc.io/files/Advertising-IO-Template-v08-Global.docx" target="_blank">Download IO Template ↗</a></td>
+          </tr>
+          <tr>
+            <td>Global Region</td>
+            <td>Crypto Payment</td>
+            <td><a href="https://io-template-download-qa.auto-ai-eks-ingress.ai-pub-devtest.ww5sawfyut0k.bitsvc.io/files/Advertising-IO-Template-v08-Global-Wallet.docx" target="_blank">Download IO Template ↗</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top:12px; font-size:11px; color:#64748b;">
+        Once signed, email to <a href="mailto:gx.lim@bybit.com">gx.lim@bybit.com</a> — allow 2–3 weeks for the counter-signed copy.
+      </div>
+    </div>
+
+    <!-- ── SECTION 6: APPSFLYER SETUP ── -->
+    <div class="sec-card sec-locked" id="sec6">
+      <div class="sec-header">
+        <span class="sec-num n6">6</span>
+        <div>
+          <div class="sec-title">AppsFlyer Setup</div>
+          <div class="sec-sub">Choose your setup type — each AFPRT/PID is tied to one buy type only</div>
+        </div>
+      </div>
+
+      <div class="af-row">
+        <div class="af-card recommended">
+          <span class="af-badge rec">Strongly Recommended</span>
+          <div class="af-title">AFPRT Account</div>
+          <ul>
+            <li>Must be fully owned by your company</li>
+            <li>If another agency/company is found sharing the same AFPRT, payment may be withheld</li>
+            <li>Both-way identification is required</li>
+            <li>Processing time: 1–2 working days after submission</li>
+          </ul>
+        </div>
+        <div class="af-card">
+          <span class="af-badge std">Standard</span>
+          <div class="af-title">PID Account</div>
+          <ul>
+            <li>PID must be fully owned by you — email confirmation required</li>
+            <li>Processing time: 1–2 working days for verification</li>
+            <li>Same PID will not receive duplicate payment from Bybit</li>
+            <li>An email must be sent to confirm PID ownership before proceeding</li>
+          </ul>
+          <div class="af-warn">⚠️ Duplicate PIDs across vendors will not receive double billing.</div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px; background:#0d1825; border:1px solid #1e3a5f; border-radius:8px; padding:12px 14px; font-size:11px; color:#94a3b8; line-height:1.7;">
+        <strong style="color:#e2e8f0;">Important:</strong> Each AFPRT or PID is mapped to a single buy type (eFTD <em>or</em> eFTT) — you cannot assign both to the same AFPRT/PID. If you want to run both buy types, register separate entries below.
+      </div>
+    </div>
+
+    <!-- ── SECTION 7: REGISTRATION FORM ── -->
+    <div class="sec-card sec-locked" id="sec7" style="border-color:#1e3a5f; padding-bottom: 0;">
+      <div class="sec-header" style="margin-bottom:8px;">
+        <span class="sec-num n7">7</span>
+        <div>
+          <div class="sec-title">Submit Registration</div>
+          <div class="sec-sub">Fill in the form below — your submission goes directly into our Bybit tracker</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:#475569;margin-bottom:16px;padding:0 2px;">
+        Each row = one AFPRT or PID entry. If you have multiple entries, submit this form once per entry.
+        For questions contact <a href="mailto:gx.lim@bybit.com">gx.lim@bybit.com</a>
+      </div>
+      <div style="border-radius:0 0 14px 14px; overflow:hidden; margin:0 -28px -0px;">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSdX-huKe2Md4ht3LLdJUdav1EJ_1LbKuLtNT7k26GwX_qiKpA/viewform?embedded=true"
+          width="100%" height="1636" frameborder="0" marginheight="0" marginwidth="0"
+          style="display:block;">
+          Loading…
+        </iframe>
+      </div>
+    </div>
+    <!-- ── SUMMARY (password-protected) ── -->
+    <div class="sec-card" id="secSummary">
+      <div class="sec-header">
+        <span class="sec-num" style="background:#334155;color:#94a3b8;">S</span>
+        <div>
+          <div class="sec-title">Page Summary &amp; Edit Log</div>
+          <div class="sec-sub">Internal reference — for admin use only</div>
+        </div>
+      </div>
+
+      <div class="sum-grid">
+        <div class="sum-block">
+          <div class="sum-block-title">Hosting</div>
+          <div class="sum-row"><span class="sum-label">Live URL</span><span class="sum-val"><a href="https://gxlim-a11y.github.io/bybit-vendor-activation/" target="_blank">gxlim-a11y.github.io/bybit-vendor-activation/</a></span></div>
+          <div class="sum-row"><span class="sum-label">GitHub Repo</span><span class="sum-val"><a href="https://github.com/gxlim-a11y/bybit-vendor-activation" target="_blank">github.com/gxlim-a11y/bybit-vendor-activation</a></span></div>
+          <div class="sum-row"><span class="sum-label">Push method</span><span class="sum-val">PAT embedded in remote URL temporarily, stripped after push</span></div>
+          <div class="sum-row"><span class="sum-label">Source file</span><span class="sum-val">Single file: index.html</span></div>
+          <div class="sum-row"><span class="sum-label">Source doc</span><span class="sum-val"><a href="https://uponly.larksuite.com/wiki/HrYfwh2gyiYF2BkoyGUujmrcs5g" target="_blank">Vendor Onboarding Automation (Lark) ↗</a></span></div>
+        </div>
+        <div class="sum-block">
+          <div class="sum-block-title">Lark Bitable Backend</div>
+          <div class="sum-row"><span class="sum-label">Bitable</span><span class="sum-val"><a href="https://uponly.larksuite.com/wiki/ZviUwwZaEiFU8bkFEX7uDSHSsgg" target="_blank">Open Bitable ↗</a></span></div>
+          <div class="sum-row"><span class="sum-label">App token</span><span class="sum-val">MHTxbqYbSa05s9sEqgbuTrI1she</span></div>
+          <div class="sum-row"><span class="sum-label">Registration table</span><span class="sum-val">tbl2AhoL9JKldwaW</span></div>
+          <div class="sum-row"><span class="sum-label">Agreement Log</span><span class="sum-val">tblvW2LI9NFRbTgq (form view vewEKrDgKE)</span></div>
+        </div>
+      </div>
+
+      <div class="sum-block" style="margin-bottom:14px;">
+        <div class="sum-block-title">Google Forms (external-facing, no login required)</div>
+        <div style="margin-bottom:10px;">
+          <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.7px;color:#64748b;margin-bottom:6px;">Section 3 — Agreement Log</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px;">
+            <span style="background:#0f1117;border:1px solid #1e293b;border-radius:6px;padding:3px 10px;font-size:11px;color:#94a3b8;">Full Name <span style="color:#ef4444;">*</span></span>
+            <span style="background:#0f1117;border:1px solid #1e293b;border-radius:6px;padding:3px 10px;font-size:11px;color:#94a3b8;">Email <span style="color:#ef4444;">*</span></span>
+            <span style="background:#0f1117;border:1px solid #1e293b;border-radius:6px;padding:3px 10px;font-size:11px;color:#94a3b8;">Date <span style="color:#ef4444;">*</span></span>
+          </div>
+          <div style="font-size:10px;color:#475569;">Form ID: 1FAIpQLSeRUY5ThT1KLf9bWJZxI9Kcf-zT4lGNPKnD-tbD1yLVFirEaw — embedded in agree modal, opens inline</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.7px;color:#64748b;margin-bottom:6px;">Section 6 — Vendor Registration</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px;">
+            <span style="background:#0f1117;border:1px solid #1e293b;border-radius:6px;padding:3px 10px;font-size:11px;color:#94a3b8;">Vendor Name <span style="color:#ef4444;">*</span></span>
+            <span style="background:#0f1117;border:1px solid #1e293b;border-radius:6px;padding:3px 10px;font-size:11px;color:#94a3b8;">Email 1 <span style="color:#ef4444;">*</span></span>
+            <span style="background:#0f1117;border:1px solid #1e293b;border-radius:6px;padding:3px 10px;font-size:11px;color:#94a3b8;">Email 2</span>
+            <span style="background:#0f1117;border:1px solid #1e293b;border-radius:6px;padding:3px 10px;font-size:11px;color:#94a3b8;">Email 3</span>
+            <span style="background:#0f1117;border:1px solid #1e293b;border-radius:6px;padding:3px 10px;font-size:11px;color:#94a3b8;">Entry Type (AFPRT / PID) <span style="color:#ef4444;">*</span></span>
+            <span style="background:#0f1117;border:1px solid #1e293b;border-radius:6px;padding:3px 10px;font-size:11px;color:#94a3b8;">Entry ID <span style="color:#ef4444;">*</span></span>
+            <span style="background:#0f1117;border:1px solid #1e293b;border-radius:6px;padding:3px 10px;font-size:11px;color:#94a3b8;">Buy Type (eFTD / eFTT) <span style="color:#ef4444;">*</span></span>
+            <span style="background:#0f1117;border:1px solid #1e293b;border-radius:6px;padding:3px 10px;font-size:11px;color:#94a3b8;">Notes</span>
+          </div>
+          <div style="font-size:10px;color:#475569;">Form ID: 1FAIpQLSdX-huKe2Md4ht3LLdJUdav1EJ_1LbKuLtNT7k26GwX_qiKpA — embedded in Section 6</div>
+        </div>
+      </div>
+
+      <div class="sum-block" style="margin-bottom:14px;">
+        <div class="sum-block-title">Page Sections</div>
+        <ul class="sum-section-list">
+          <li>
+            <span class="sum-sec-num n1">1</span>
+            <div class="sum-sec-body"><strong>Campaign Goals</strong> — eFTT (preferred, green), eFTD (conditional, amber), CPM/CPC/CPI/Signup (not recommended, red). Core principle: high-quality users who deposit AND trade.</div>
+          </li>
+          <li>
+            <span class="sum-sec-num n2">2</span>
+            <div class="sum-sec-body"><strong>IO &amp; Setup Requirements</strong> — 4 action items: sign IO, confirm parallel start, share advertiser name for AppsFlyer, confirm agency/ad network setup. IO sent to gx.lim@bybit.com; 2–3 weeks for countersigned copy.</div>
+          </li>
+          <li>
+            <span class="sum-sec-num n3">3</span>
+            <div class="sum-sec-body"><strong>Key Confirmations</strong> — 6 required items: (1) PID macro string, (2) Fraud policy (KYC abuse / fake devices / high eFTD no-trade), (3) Campaign briefing &amp; launch flow (no launch without written confirmation), (4) Restricted markets (13 countries: SG, MY, TH, PH, CA, AU, NZ, FR, US, UZ, ID, HK, JP), (5) Billing validation (IS Primary Attribution = TRUE &amp; Retargeting = NO), (6) Attribution rules (signup = first-touch; eFTD &amp; eFTT = last-click). Agree button opens Google Form modal to record name, email, date.</div>
+          </li>
+          <li>
+            <span class="sum-sec-num n4">4</span>
+            <div class="sum-sec-body"><strong>Payout Price</strong> — CPA payout table by region (27 markets). Columns: Region, App (BYBIT or EU), eFTD Payout, eFTT Payout. Warning: "App" = AppsFlyer app setting (BYBIT or EU); if conversions attributed to wrong app, Finance will not pay. eFTT payouts TBD (shown as —).</div>
+          </li>
+          <li>
+            <span class="sum-sec-num n5">5</span>
+            <div class="sum-sec-body"><strong>IO Documents</strong> — 2 download links: Global Bank, Global Crypto (.docx templates). EU region rows removed. Note: IO payment details must match invoice payment details.</div>
+          </li>
+          <li>
+            <span class="sum-sec-num n6">6</span>
+            <div class="sum-sec-body"><strong>AppsFlyer Setup</strong> — AFPRT (vendor-owned, strongly recommended, 1–2 day processing) vs PID (standard, ownership email confirmation required). Each AFPRT/PID maps to one buy type only — register separate entries for eFTD and eFTT.</div>
+          </li>
+          <li>
+            <span class="sum-sec-num n7">7</span>
+            <div class="sum-sec-body"><strong>Submit Registration</strong> — Google Form embedded (no Lark account required). Fields: Vendor Name, Email 1–3, Entry Type, Entry ID, Buy Type, Notes. One submission per AFPRT/PID entry.</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sum-block">
+        <div class="sum-block-title">Edit History</div>
+        <ul class="history-list">
+          <li>
+            <span class="history-date">2026-06-18</span>
+            <span class="history-entry">Initial build — 6-section vendor activation page. Lark Bitable set up (tbl2AhoL9JKldwaW): Vendor Name, Email 1–3, Entry Type, Entry ID, Buy Type, Notes, Submitted At. Lark form iFrame embedded in Section 6.</span>
+          </li>
+          <li>
+            <span class="history-date">2026-06-19</span>
+            <span class="history-entry">CSS cleanup, GitHub Pages deploy, password-protected Summary section added (password: 1234, lock icon in footer). Section 3 updated: Fraud Policy added high-eFTD-no-trade bullet; Restricted Markets updated to 13 countries (added AU, ID, HK; removed UK); Attribution Rules added eFTT last-click.</span>
+          </li>
+          <li>
+            <span class="history-date">2026-06-19</span>
+            <span class="history-entry">Progress bar made sticky + scroll-aware. Section 3 agree button added — modal collects name + email, shows Agreement Confirmed card, unlocks Sections 4–6. Scroll lock added: Sections 4–6 blurred until agreement; snap-back + flash if bypassed.</span>
+          </li>
+          <li>
+            <span class="history-date">2026-06-22</span>
+            <span class="history-entry">Agreement flow overhauled: replaced local name/email modal with Google Form (ID: 1FAIpQLSeRUY5ThT1KLf9bWJZxI9Kcf-zT4lGNPKnD-tbD1yLVFirEaw) — fields: Full Name, Email, Date. New Lark Bitable Agreement Log table created (tblvW2LI9NFRbTgq) — Lark form set to anyone_editable but replaced by Google Form due to Lark requiring account login for external users.</span>
+          </li>
+          <li>
+            <span class="history-date">2026-06-22</span>
+            <span class="history-entry">Section 6 replaced Lark form iFrame with Google Form (ID: 1FAIpQLSdX-huKe2Md4ht3LLdJUdav1EJ_1LbKuLtNT7k26GwX_qiKpA) — same reason: external users cannot submit Lark forms without a Lark account. Removed "Agreed By Name", "Agreed Email", and "Agreed At" columns from both Lark tables.</span>
+          </li>
+          <li>
+            <span class="history-date">2026-06-22</span>
+            <span class="history-entry">Source doc (Vendor Onboarding Automation wiki) updated by user: sections renumbered to correlate with site structure. New Payout Price table added to source doc (eFTD + eFTT by region/app). Page restructured to 7 sections — new Section 4 (Payout Price) inserted after Key Confirmations; IO Documents → 5, AppsFlyer → 6, Registration → 7. eFTT payouts shown as TBD (—).</span>
+          </li>
+          <li>
+            <span class="history-date">2026-06-22</span>
+            <span class="history-entry">Section 5 (IO Documents) updated: EU Region rows removed; links updated from Google Docs to .docx templates (Advertising-IO-Template-v08-Global and v08-Global-Wallet). Now 2 rows: Global Bank and Global Crypto only.</span>
+          </li>
+          <li>
+            <span class="history-date">2026-06-22</span>
+            <span class="history-entry">Section 4 warning text updated: clarified that "App" refers to the AppsFlyer app setting (BYBIT or EU), not the vendor's own application.</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div><!-- /main -->
+
+  <!-- AGREE MODAL -->
+  <div class="agree-overlay" id="agreeOverlay">
+    <div class="agree-box" style="width:680px;">
+      <div class="agree-box-title">Record Your Agreement</div>
+      <div class="agree-box-sub">Fill in your details below and submit, then click <strong style="color:#4ade80;">Done</strong> to continue.</div>
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSeRUY5ThT1KLf9bWJZxI9Kcf-zT4lGNPKnD-tbD1yLVFirEaw/viewform?embedded=true"
+        width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0"
+        style="border-radius:8px; margin-bottom:14px; display:block;">
+        Loading…
+      </iframe>
+      <div class="agree-actions">
+        <button class="agree-submit" onclick="doneAgreement()">✅ Done — I've submitted</button>
+        <button class="agree-cancel-btn" onclick="closeAgreeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PASSWORD OVERLAY -->
+  <div class="pw-overlay" id="pwOverlay">
+    <div class="pw-box">
+      <div class="pw-icon">🔒</div>
+      <div class="pw-title">Admin Access</div>
+      <div class="pw-sub">Enter password to view page summary</div>
+      <input class="pw-input" id="pwInput" type="password" maxlength="20" placeholder="••••" autocomplete="off" />
+      <div class="pw-err" id="pwErr"></div>
+      <button class="pw-btn" onclick="checkPw()">Unlock</button>
+      <button class="pw-cancel" onclick="closePw()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="site-footer">
+    <div class="footer-left">Bybit Performance Partnership · For Partner Use Only</div>
+    <div class="footer-right" style="display:flex;align-items:center;gap:10px;">
+      <span>CPA Model · AppsFlyer · AFPRT / PID Activation</span>
+      <button class="lock-btn" onclick="openPw()" title="Admin">🔒</button>
+    </div>
+  </div>
+
+  <script>
+    function scrollTo(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    let agreed = false;
+
+    function getScrollLimit() {
+      const barrier = document.getElementById('sec3-barrier');
+      const pb = document.querySelector('.progress-bar');
+      const pbH = pb ? pb.offsetHeight : 48;
+      return barrier ? Math.max(0, barrier.offsetTop - pbH - 20) : Infinity;
+    }
+
+    let snapBusy = false;
+    window.addEventListener('scroll', function() {
+      if (agreed || snapBusy) return;
+      const limit = getScrollLimit();
+      if (window.scrollY > limit) {
+        snapBusy = true;
+        window.scrollTo({ top: limit, behavior: 'instant' });
+        const btn = document.querySelector('.btn-agree:not([disabled])');
+        if (btn) {
+          btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          btn.classList.remove('flash');
+          void btn.offsetWidth;
+          btn.classList.add('flash');
+          setTimeout(() => btn.classList.remove('flash'), 800);
+        }
+        setTimeout(() => { snapBusy = false; }, 200);
+      }
+    });
+
+    const SECTIONS = ['sec1','sec2','sec3','sec4','sec5','sec6','sec7'];
+
+    function updateProgress() {
+      const offset = document.querySelector('.progress-bar').offsetHeight + 16;
+      let current = 0;
+      SECTIONS.forEach((id, i) => {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= offset) current = i;
+      });
+      document.querySelectorAll('.prog-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', i === current);
+        btn.classList.toggle('done',   i < current);
+      });
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    function copyPrefill(id, btn) {
+      const text = document.getElementById(id).textContent;
+      if (!text || text === '—') return;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1500);
+      });
+    }
+
+    function openAgreeModal() {
+      document.getElementById('agreeOverlay').classList.add('show');
+    }
+
+    function closeAgreeModal() {
+      document.getElementById('agreeOverlay').classList.remove('show');
+    }
+
+    function doneAgreement() {
+      closeAgreeModal();
+
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' })
+                    + ' · ' + now.toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit' });
+
+      document.getElementById('confirmedDate').textContent = dateStr;
+
+      const card = document.getElementById('agreeConfirmed');
+      card.classList.add('show');
+      card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      const btn = document.querySelector('.btn-agree');
+      btn.textContent = '✅ Agreement recorded';
+      btn.disabled = true;
+      btn.style.opacity = '0.5';
+      btn.style.cursor = 'default';
+
+      agreed = true;
+      ['sec4','sec5','sec6','sec7'].forEach(id => {
+        document.getElementById(id).classList.remove('sec-locked');
+      });
+      document.getElementById('sec3-barrier').classList.add('unlocked');
+
+    }
+
+    document.getElementById('agreeOverlay').addEventListener('click', function(e) {
+      if (e.target === this) closeAgreeModal();
+    });
+
+    function openPw() {
+      document.getElementById('pwOverlay').classList.add('show');
+      setTimeout(() => document.getElementById('pwInput').focus(), 50);
+    }
+
+    function closePw() {
+      document.getElementById('pwOverlay').classList.remove('show');
+      document.getElementById('pwInput').value = '';
+      document.getElementById('pwErr').textContent = '';
+    }
+
+    function checkPw() {
+      const input = document.getElementById('pwInput');
+      const err   = document.getElementById('pwErr');
+      if (input.value === '1234') {
+        closePw();
+        const summary = document.getElementById('secSummary');
+        summary.classList.add('visible');
+        setTimeout(() => summary.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+      } else {
+        err.textContent = 'Incorrect password.';
+        input.classList.add('error');
+        input.value = '';
+        setTimeout(() => input.classList.remove('error'), 400);
+      }
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && document.getElementById('pwOverlay').classList.contains('show')) {
+        checkPw();
+      }
+      if (e.key === 'Escape') closePw();
+    });
+
+    document.getElementById('pwOverlay').addEventListener('click', function(e) {
+      if (e.target === this) closePw();
+    });
+  </script>
+
+</body>
+</html>
