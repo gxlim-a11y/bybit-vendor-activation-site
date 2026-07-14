@@ -445,25 +445,19 @@
     </div>
     <div class="prog-step">
       <button class="prog-btn" onclick="scrollTo('sec4')">
-        <span class="prog-num">4</span> Payout Price
+        <span class="prog-num">4</span> IO Documents
       </button>
       <span class="prog-arrow">›</span>
     </div>
     <div class="prog-step">
       <button class="prog-btn" onclick="scrollTo('sec5')">
-        <span class="prog-num">5</span> IO Documents
+        <span class="prog-num">5</span> AppsFlyer Setup
       </button>
       <span class="prog-arrow">›</span>
     </div>
     <div class="prog-step">
       <button class="prog-btn" onclick="scrollTo('sec6')">
-        <span class="prog-num">6</span> AppsFlyer Setup
-      </button>
-      <span class="prog-arrow">›</span>
-    </div>
-    <div class="prog-step">
-      <button class="prog-btn" onclick="scrollTo('sec7')">
-        <span class="prog-num">7</span> Submit Registration
+        <span class="prog-num">6</span> Submit Registration
       </button>
     </div>
   </div>
@@ -481,15 +475,17 @@
       </div>
 
       <div class="goal-row">
-        <div class="goal-card gc-green">
+        <div class="goal-card gc-green" onclick="document.getElementById('modal-eftt').style.display='flex'" style="cursor:pointer;">
           <span class="gc-badge">Preferred</span>
-          <div class="gc-title">✅ eFTT Buy</div>
-          <div class="gc-body">Users deposit ≥ $100 (eFTD) and make their first trade (eFTT). This is Bybit's primary revenue event — trading fees are only earned when users trade. Agreeing to eFTT will fast-track your onboarding.</div>
+          <div class="gc-title">✅ eFTT-Core Buy</div>
+          <div class="gc-body">Deposit ≥ $100 AND first trade within 30 days. Bybit's primary revenue event — only trading generates fees. Fast-track onboarding.</div>
+          <div style="margin-top:8px; font-size:10px; color:#4ade80; font-weight:600;">ℹ️ Click for details</div>
         </div>
-        <div class="goal-card gc-amber">
+        <div class="goal-card gc-amber" onclick="document.getElementById('modal-eftd').style.display='flex'" style="cursor:pointer;">
           <span class="gc-badge">Conditional</span>
           <div class="gc-title">⚠️ eFTD Buy</div>
-          <div class="gc-body">Deposit ≥ $100 within 14 days of sign-up. Accepted with additional TnC agreement. Note: eFTD alone generates no revenue for Bybit until the user goes on to trade.</div>
+          <div class="gc-body">Deposit ≥ $100 within 14 days. Does not directly impact OKR/revenue. Higher risk — closely monitored.</div>
+          <div style="margin-top:8px; font-size:10px; color:#fcd34d; font-weight:600;">ℹ️ Click for details</div>
         </div>
         <div class="goal-card gc-red">
           <span class="gc-badge">Not Recommended</span>
@@ -500,6 +496,73 @@
 
       <div class="goal-note">
         <strong>Bybit's core principle:</strong> We evaluate ROI on every vendor investment. If eFTDs are not trading, or trading below payout levels, that traffic is classified as <strong>less valid or invalid</strong>. We are exclusively targeting high-quality users who deposit <em>and</em> trade.
+      </div>
+
+      <!-- eFTT-Core Modal -->
+      <div id="modal-eftt" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.7); align-items:center; justify-content:center; padding:20px;" onclick="if(event.target===this)this.style.display='none'">
+        <div style="background:#131b2e; border:1.5px solid #166534; border-radius:14px; padding:28px 32px; max-width:750px; width:100%; position:relative;">
+          <button onclick="document.getElementById('modal-eftt').style.display='none'" style="position:absolute; top:12px; right:16px; background:none; border:none; color:#94a3b8; font-size:20px; cursor:pointer;">✕</button>
+          <div style="font-size:15px; font-weight:700; color:#4ade80; margin-bottom:16px;">✅ eFTT-Core Buy</div>
+          <div style="font-size:12px; color:#e2e8f0; line-height:1.8;">
+            <p style="margin-bottom:10px;"><strong style="color:#f8fafc;">What is eFTT-Core?</strong><br/>Deposit ≥ $100 AND first trade within 30 days. Bybit's primary revenue event — only active traders generate fees.</p>
+            <p style="margin-bottom:8px;"><strong style="color:#f8fafc;">Conversion Flow:</strong></p>
+            <div style="background:#0d1825; border:1px solid #1e3a5f; border-radius:8px; padding:10px 14px; margin-bottom:12px; font-size:11px; font-family:monospace; color:#4ade80; text-align:center; letter-spacing:0.5px;">
+              👁️ Impressions → 👆 Clicks → 📲 Install → ✍️ Signup → 🪪 KYC → 💰 <strong>eFTD</strong> → <strong style="color:#fff; background:#166534; padding:1px 6px; border-radius:4px;">📈 eFTT-Core</strong>
+            </div>
+            <table style="width:100%; border-collapse:collapse; font-size:11px; margin-bottom:12px;">
+              <tr style="border-bottom:1px solid #1e3a5f;">
+                <td style="padding:6px 8px; color:#94a3b8;">Trial Budget</td>
+                <td style="padding:6px 8px; color:#4ade80; font-weight:700;">$5,000</td>
+              </tr>
+              <tr style="border-bottom:1px solid #1e3a5f;">
+                <td style="padding:6px 8px; color:#94a3b8;">Trial Period</td>
+                <td style="padding:6px 8px; color:#e2e8f0;">4–5 weeks</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 8px; color:#94a3b8;">Post-trial</td>
+                <td style="padding:6px 8px; color:#e2e8f0;">Pause if targets not met</td>
+              </tr>
+            </table>
+            <p style="margin-bottom:0;"><strong style="color:#f8fafc;">Why preferred:</strong> Aligned with company goals — only trading users generate revenue. Higher budget &amp; faster onboarding for vendors who agree.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- eFTD Modal -->
+      <div id="modal-eftd" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.7); align-items:center; justify-content:center; padding:20px;" onclick="if(event.target===this)this.style.display='none'">
+        <div style="background:#131b2e; border:1.5px solid #92400e; border-radius:14px; padding:28px 32px; max-width:750px; width:100%; position:relative;">
+          <button onclick="document.getElementById('modal-eftd').style.display='none'" style="position:absolute; top:12px; right:16px; background:none; border:none; color:#94a3b8; font-size:20px; cursor:pointer;">✕</button>
+          <div style="font-size:15px; font-weight:700; color:#fcd34d; margin-bottom:16px;">⚠️ eFTD Buy</div>
+          <div style="font-size:12px; color:#e2e8f0; line-height:1.8;">
+            <p style="margin-bottom:10px;"><strong style="color:#f8fafc;">What is eFTD?</strong><br/>Deposit ≥ $100 within 14 days of sign-up. Does not directly impact OKR or revenue.</p>
+            <p style="margin-bottom:8px;"><strong style="color:#f8fafc;">Conversion Flow:</strong></p>
+            <div style="background:#0d1825; border:1px solid #1e3a5f; border-radius:8px; padding:10px 14px; margin-bottom:6px; font-size:11px; font-family:monospace; color:#fcd34d; text-align:center; letter-spacing:0.5px;">
+              👁️ Impressions → 👆 Clicks → 📲 Install → ✍️ Signup → 🪪 KYC → <strong style="color:#fff; background:#92400e; padding:1px 6px; border-radius:4px;">💰 eFTD</strong>
+            </div>
+            <div style="background:#0d1825; border:1px solid #1e3a5f; border-radius:8px; padding:8px 14px; margin-bottom:12px; font-size:10px; font-family:monospace; color:#94a3b8; text-align:center;">
+              If deposit &lt; $100: 👁️ → 👆 → 📲 → ✍️ → 🪪 → 💵 FTD <span style="color:#fca5a5;">(not billable)</span>
+            </div>
+            <table style="width:100%; border-collapse:collapse; font-size:11px; margin-bottom:12px;">
+              <tr style="border-bottom:1px solid #1e3a5f;">
+                <td style="padding:6px 8px; color:#94a3b8;">Trial Budget</td>
+                <td style="padding:6px 8px; color:#fcd34d; font-weight:700;">$3,000</td>
+              </tr>
+              <tr style="border-bottom:1px solid #1e3a5f;">
+                <td style="padding:6px 8px; color:#94a3b8;">Trial Period</td>
+                <td style="padding:6px 8px; color:#e2e8f0;">3 weeks</td>
+              </tr>
+              <tr style="border-bottom:1px solid #1e3a5f;">
+                <td style="padding:6px 8px; color:#94a3b8;">No trade =</td>
+                <td style="padding:6px 8px; color:#e2e8f0;">Deposited but no action after</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 8px; color:#94a3b8;">Post-trial</td>
+                <td style="padding:6px 8px; color:#e2e8f0;">No trade/fees → closed. Vendor notified to pause.</td>
+              </tr>
+            </table>
+            <p style="margin-bottom:0;"><strong style="color:#fca5a5;">⚠️ Higher Risk:</strong> Not Bybit's core objective. Team monitors closely to avoid loss. Non-trading traffic = invalid.</p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -560,11 +623,15 @@
         <div class="confirm-item required">
           <div class="ci-head">
             <span class="ci-icon">🔐</span>
-            <div class="ci-title">PID Requirement — Macro String</div>
+            <div class="ci-title">PID / AFPRT Requirement — Macro String</div>
           </div>
           <div class="ci-body">
-            Before launching any campaign, a macro string <strong>must</strong> be appended to the PID (VTA/CTA). Bybit will provide standardized template links for you to apply the macro directly.<br/><br/>
-            <strong style="color:#fca5a5;">⚠️ Any PID running links not aligned with our required format will result in eFTDs not being billable.</strong>
+            Before launching any campaigns, a macro string <strong>must</strong> be appended to the AFPRT/PID (VTA/CTA). Bybit will provide standardized template links for you to apply the macro directly.<br/><br/>
+            The <code style="background:#1e293b;padding:2px 6px;border-radius:4px;font-size:11px;">c=parameter</code> is a mandatory Bybit parameter. If you do not agree to this or modify it, Bybit reserves the right to withhold payment.<br/><br/>
+            <div style="background:#1e293b;border:1px solid #334155;border-radius:6px;padding:8px 12px;font-size:11px;font-family:monospace;color:#94a3b8;margin-bottom:8px;">
+              Example: <span style="color:#4ade80;">trendingcoinevergreen_17301743002311598</span>
+            </div>
+            <strong style="color:#fca5a5;">⚠️ Any AFPRT/PID running links not aligned with our required format will result in eFTDs not being billable.</strong>
           </div>
         </div>
 
@@ -574,7 +641,7 @@
             <div class="ci-title">Fraud Policy</div>
           </div>
           <div class="ci-body">
-            Our internal risk team flags fraudulent users based on abnormal behaviours at the eFTD level, including but not limited to:
+            Our internal risk team flags fraudulent users based on abnormal behaviours at the eFTD and eFTT level, including but not limited to:
             <ul>
               <li>Use of externally purchased KYC services</li>
               <li>Multiple fake or emulated devices abusing reward mechanisms</li>
@@ -591,8 +658,12 @@
           </div>
           <div class="ci-body">
             Campaign assets (budget, creatives, tracking links) will be shared via email. <strong>Do not launch any campaign without prior written confirmation from Bybit.</strong><br/><br/>
-            All tracking links must be adjusted to match our internal attribution requirements. Do not run unmodified links or remove existing parameters.
-            <br/><br/><strong style="color:#fca5a5;">Non-compliance may result in eFTDs being deemed invalid and non-billable.</strong>
+            <ul style="margin-bottom:8px;">
+              <li>All tracking links must be adjusted to match our internal attribution requirements.</li>
+              <li>Do not run any unmodified links — links without Bybit parameters will not be paid.</li>
+              <li>Do not remove existing parameters (additional parameters may be added if required).</li>
+            </ul>
+            <strong style="color:#fca5a5;">Non-compliance may result in eFTDs/eFTTs being deemed invalid and non-billable.</strong>
           </div>
         </div>
 
@@ -626,7 +697,7 @@
             <div class="ci-title">Billing Validation</div>
           </div>
           <div class="ci-body">
-            Bybit validates and pays <strong>only</strong> for eFTDs reflected in the raw report that meet both conditions:
+            Bybit validates and pays <strong>only</strong> for eFTDs/eFTTs reflected in the AppsFlyer raw report that meet both conditions:
             <ul>
               <li><strong>IS Primary Attribution = TRUE</strong></li>
               <li><strong>Retargeting = NO</strong></li>
@@ -642,11 +713,24 @@
           <div class="ci-body">
             <strong>Signup:</strong> First-touch attribution<br/>
             <strong>eFTD:</strong> Last-click attribution<br/>
-            <strong>eFTT:</strong> Last-click attribution<br/><br/>
+            <strong>eFTT-Core:</strong> Last-click attribution<br/><br/>
             Once a user signs up under your account or campaign ID, the signup remains attributed to you. Other vendors cannot hijack or redirect this data to claim the eFTD.
           </div>
         </div>
 
+      </div>
+
+      <!-- Background Info -->
+      <div style="margin-top:18px;background:#0d1825;border:1px solid #1e3a5f;border-radius:8px;padding:14px 16px;font-size:11px;color:#94a3b8;line-height:1.8;">
+        <strong style="color:#e2e8f0;font-size:12px;">Background Information</strong><br/>
+        <ul style="margin:8px 0 0;padding-left:16px;">
+          <li>We are currently using <strong style="color:#e2e8f0;">AppsFlyer only</strong> as our Mobile Measurement Partner (MMP).</li>
+          <li>All partnerships operate on a <strong style="color:#e2e8f0;">CPA model</strong>.</li>
+          <li><strong style="color:#e2e8f0;">FTD</strong> — triggered when a user makes their first deposit.</li>
+          <li><strong style="color:#e2e8f0;">eFTD</strong> — triggered when a user deposits ≥ USD 100 within 14 days of their FTD.</li>
+          <li><strong style="color:#e2e8f0;">eFTT-Core</strong> — triggered when a user deposits ≥ USD 100 and completes their first trade within 30 days of eFTD.</li>
+          <li>Payout pricing will be shared after your IO submission. All vendors start with the same initial payout. Once your UA users demonstrate higher trading activity or user value, we will submit an approval to increase your payout.</li>
+        </ul>
       </div>
 
       <button class="btn-agree" onclick="openAgreeModal()">
@@ -670,47 +754,10 @@
       🔒 Please agree to the terms in Section 3 to continue
     </div>
 
-    <!-- ── SECTION 4: PAYOUT PRICE ── -->
+    <!-- ── SECTION 4: IO DOCUMENTS ── -->
     <div class="sec-card sec-locked" id="sec4">
       <div class="sec-header">
         <span class="sec-num n4">4</span>
-        <div>
-          <div class="sec-title">Payout Price</div>
-          <div class="sec-sub">CPA payouts by region — confirm your App type before proceeding</div>
-        </div>
-      </div>
-      <div style="background:#1a0808;border:1px solid #7f1d1d;border-radius:8px;padding:10px 14px;margin-bottom:16px;font-size:11px;color:#fca5a5;line-height:1.6;">
-        ⚠️ <strong>The "App" column refers to the AppsFlyer app setting (BYBIT or EU).</strong> If conversions are attributed to the wrong AppsFlyer app, Finance will not proceed with payment.
-      </div>
-      <table class="io-table">
-        <thead>
-          <tr>
-            <th>Region</th>
-            <th>Countries</th>
-            <th>App</th>
-            <th style="color:#4ade80;">eFTT Payout</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Africa</td><td>NG, GH, ZA, KE, CM</td><td>BYBIT</td><td>$5</td></tr>
-          <tr><td>Brazil</td><td>BR</td><td>BYBIT</td><td>$10</td></tr>
-          <tr><td>CIS</td><td>RU, UA</td><td>BYBIT</td><td>$50</td></tr>
-          <tr><td>India</td><td>IN</td><td>BYBIT</td><td>$10</td></tr>
-          <tr><td>Kazakhstan</td><td>KG, KZ, TJ</td><td>BYBIT</td><td>$50</td></tr>
-          <tr><td>Korea</td><td>KR</td><td>BYBIT</td><td>$160</td></tr>
-          <tr><td>Mandarin</td><td>TW, MO, CN</td><td>BYBIT</td><td>$50</td></tr>
-          <tr><td>MENA</td><td>AE, IL, IQ, YE, LB, QA</td><td>BYBIT</td><td>$45</td></tr>
-          <tr><td>Pakistan</td><td>PK</td><td>BYBIT</td><td>$20</td></tr>
-          <tr><td>Turkey</td><td>TR</td><td>BYBIT</td><td>$35</td></tr>
-          <tr><td>Vietnam</td><td>VN</td><td>BYBIT</td><td>$60</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- ── SECTION 5: IO DOCUMENTS ── -->
-    <div class="sec-card sec-locked" id="sec5">
-      <div class="sec-header">
-        <span class="sec-num n5">5</span>
         <div>
           <div class="sec-title">IO Documents</div>
           <div class="sec-sub">Download the correct IO based on your region and payment method</div>
@@ -742,10 +789,10 @@
       </div>
     </div>
 
-    <!-- ── SECTION 6: APPSFLYER SETUP ── -->
-    <div class="sec-card sec-locked" id="sec6">
+    <!-- ── SECTION 5: APPSFLYER SETUP ── -->
+    <div class="sec-card sec-locked" id="sec5">
       <div class="sec-header">
-        <span class="sec-num n6">6</span>
+        <span class="sec-num n5">5</span>
         <div>
           <div class="sec-title">AppsFlyer Setup</div>
           <div class="sec-sub">Choose your setup type — each AFPRT/PID is tied to one buy type only</div>
@@ -777,31 +824,48 @@
       </div>
 
       <div style="margin-top:14px; background:#0d1825; border:1px solid #1e3a5f; border-radius:8px; padding:12px 14px; font-size:11px; color:#94a3b8; line-height:1.7;">
-        <strong style="color:#e2e8f0;">Important:</strong> Each AFPRT or PID is mapped to a single buy type (eFTD <em>or</em> eFTT) — you cannot assign both to the same AFPRT/PID. If you want to run both buy types, register separate entries below.
+        <strong style="color:#e2e8f0;">Important:</strong> Each AFPRT or PID is mapped to a single buy type (eFTD <em>or</em> eFTT-Core) — you cannot assign both to the same AFPRT/PID. If you want to run both buy types, register separate entries below.
       </div>
     </div>
 
-    <!-- ── SECTION 7: REGISTRATION FORM ── -->
-    <div class="sec-card sec-locked" id="sec7" style="border-color:#1e3a5f; padding-bottom: 0;">
+    <!-- ── SECTION 6: REGISTRATION FORM ── -->
+    <div class="sec-card sec-locked" id="sec6" style="border-color:#1e3a5f;">
       <div class="sec-header" style="margin-bottom:8px;">
-        <span class="sec-num n7">7</span>
+        <span class="sec-num n6">6</span>
         <div>
           <div class="sec-title">Submit Registration</div>
-          <div class="sec-sub">Fill in the form below — your submission goes directly into our Bybit tracker</div>
+          <div class="sec-sub">Register your AFPRT or PID accounts below — up to 5 entries per submission</div>
         </div>
       </div>
       <div style="font-size:11px;color:#475569;margin-bottom:16px;padding:0 2px;">
-        Each row = one AFPRT or PID entry. If you have multiple entries, submit this form once per entry.
+        Add each AFPRT or PID entry. You can register up to 5 accounts in one submission.
         For questions contact <a href="mailto:gx.lim@bybit.com">gx.lim@bybit.com</a>
       </div>
-      <div style="border-radius:0 0 14px 14px; overflow:hidden; margin:0 -28px -0px;">
-        <iframe
-          src="https://docs.google.com/forms/d/e/1FAIpQLSdX-huKe2Md4ht3LLdJUdav1EJ_1LbKuLtNT7k26GwX_qiKpA/viewform?embedded=true"
-          width="100%" height="1636" frameborder="0" marginheight="0" marginwidth="0"
-          style="display:block;">
-          Loading…
-        </iframe>
+
+      <!-- Entries container -->
+      <div id="regEntries"></div>
+
+      <!-- Add button -->
+      <button id="addEntryBtn" onclick="addEntry()" style="width:100%;padding:10px;border-radius:8px;border:1px dashed #334155;background:transparent;color:#60a5fa;font-size:12px;font-weight:600;cursor:pointer;margin-bottom:16px;transition:all 0.2s;" onmouseover="this.style.borderColor='#60a5fa';this.style.background='#0d1825'" onmouseout="this.style.borderColor='#334155';this.style.background='transparent'">
+        + Add Another Entry
+      </button>
+
+      <!-- Email (shared across all entries) -->
+      <div style="margin-bottom:16px;">
+        <label style="font-size:11px;color:#94a3b8;margin-bottom:5px;display:block;font-weight:600;">Your Email <span style="color:#ef4444;">*</span></label>
+        <input type="email" id="regEmail" placeholder="your@company.com" style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #334155;background:#0f1117;color:#e2e8f0;font-size:13px;outline:none;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#334155'">
       </div>
+
+      <div id="regError" style="display:none;color:#fca5a5;font-size:11px;margin-bottom:10px;"></div>
+      <div id="regSpinner" style="display:none;text-align:center;padding:10px;color:#94a3b8;font-size:12px;">Submitting...</div>
+      <div id="regSuccess" style="display:none;background:#052e16;border:1px solid #166534;border-radius:8px;padding:14px;text-align:center;">
+        <div style="font-size:14px;color:#4ade80;font-weight:700;margin-bottom:4px;">✅ Registration Submitted</div>
+        <div style="font-size:11px;color:#94a3b8;">Processing time: 1–2 working days. You'll receive confirmation via email.</div>
+      </div>
+
+      <button id="regSubmitBtn" onclick="submitRegistration()" style="width:100%;padding:12px;border-radius:8px;border:none;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;font-size:13px;font-weight:700;cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+        Submit All Entries →
+      </button>
     </div>
     <!-- ── SUMMARY (password-protected) ── -->
     <div class="sec-card" id="secSummary">
@@ -851,7 +915,7 @@
             <span style="background:#0f1117;border:1px solid #1e293b;border-radius:6px;padding:3px 10px;font-size:11px;color:#94a3b8;">Email 3</span>
             <span style="background:#0f1117;border:1px solid #1e293b;border-radius:6px;padding:3px 10px;font-size:11px;color:#94a3b8;">Entry Type (AFPRT / PID) <span style="color:#ef4444;">*</span></span>
             <span style="background:#0f1117;border:1px solid #1e293b;border-radius:6px;padding:3px 10px;font-size:11px;color:#94a3b8;">Entry ID <span style="color:#ef4444;">*</span></span>
-            <span style="background:#0f1117;border:1px solid #1e293b;border-radius:6px;padding:3px 10px;font-size:11px;color:#94a3b8;">Buy Type (eFTD / eFTT) <span style="color:#ef4444;">*</span></span>
+            <span style="background:#0f1117;border:1px solid #1e293b;border-radius:6px;padding:3px 10px;font-size:11px;color:#94a3b8;">Buy Type (eFTD / eFTT-Core) <span style="color:#ef4444;">*</span></span>
             <span style="background:#0f1117;border:1px solid #1e293b;border-radius:6px;padding:3px 10px;font-size:11px;color:#94a3b8;">Notes</span>
           </div>
           <div style="font-size:10px;color:#475569;">Form ID: 1FAIpQLSdX-huKe2Md4ht3LLdJUdav1EJ_1LbKuLtNT7k26GwX_qiKpA — embedded in Section 6</div>
@@ -863,7 +927,7 @@
         <ul class="sum-section-list">
           <li>
             <span class="sum-sec-num n1">1</span>
-            <div class="sum-sec-body"><strong>Campaign Goals</strong> — eFTT (preferred, green), eFTD (conditional, amber), CPM/CPC/CPI/Signup (not recommended, red). Core principle: high-quality users who deposit AND trade.</div>
+            <div class="sum-sec-body"><strong>Campaign Goals</strong> — eFTT-Core (preferred, green), eFTD (conditional, amber), CPM/CPC/CPI/Signup (not recommended, red). Core principle: high-quality users who deposit AND trade.</div>
           </li>
           <li>
             <span class="sum-sec-num n2">2</span>
@@ -871,11 +935,11 @@
           </li>
           <li>
             <span class="sum-sec-num n3">3</span>
-            <div class="sum-sec-body"><strong>Key Confirmations</strong> — 6 required items: (1) PID macro string, (2) Fraud policy (KYC abuse / fake devices / high eFTD no-trade), (3) Campaign briefing &amp; launch flow (no launch without written confirmation), (4) Restricted markets (12 countries: SG, MY, TH, PH, CA, AU, NZ, US, UZ, ID, HK, JP), (5) Billing validation (IS Primary Attribution = TRUE &amp; Retargeting = NO), (6) Attribution rules (signup = first-touch; eFTD &amp; eFTT = last-click). Agree button opens Google Form modal to record name, email, date.</div>
+            <div class="sum-sec-body"><strong>Key Confirmations</strong> — 6 required items: (1) PID macro string, (2) Fraud policy (KYC abuse / fake devices / high eFTD no-trade), (3) Campaign briefing &amp; launch flow (no launch without written confirmation), (4) Restricted markets (12 countries: SG, MY, TH, PH, CA, AU, NZ, US, UZ, ID, HK, JP), (5) Billing validation (IS Primary Attribution = TRUE &amp; Retargeting = NO), (6) Attribution rules (signup = first-touch; eFTD &amp; eFTT-Core = last-click). Agree button opens Google Form modal to record name, email, date.</div>
           </li>
           <li>
             <span class="sum-sec-num n4">4</span>
-            <div class="sum-sec-body"><strong>Payout Price</strong> — eFTT-Core payout table (11 regions). Columns: Region, App (BYBIT), eFTT Payout. eFTD column removed. Warning: if conversions attributed to wrong app, Finance will not pay.</div>
+            <div class="sum-sec-body"><strong>Payout Price</strong> — eFTT-Core payout table (12 regions). Columns: Region, App (BYBIT), eFTT-Core Payout. eFTD column removed. Warning: if conversions attributed to wrong app, Finance will not pay.</div>
           </li>
           <li>
             <span class="sum-sec-num n5">5</span>
@@ -883,7 +947,7 @@
           </li>
           <li>
             <span class="sum-sec-num n6">6</span>
-            <div class="sum-sec-body"><strong>AppsFlyer Setup</strong> — AFPRT (vendor-owned, strongly recommended, 1–2 day processing) vs PID (standard, ownership email confirmation required). Each AFPRT/PID maps to one buy type only — register separate entries for eFTD and eFTT.</div>
+            <div class="sum-sec-body"><strong>AppsFlyer Setup</strong> — AFPRT (vendor-owned, strongly recommended, 1–2 day processing) vs PID (standard, ownership email confirmation required). Each AFPRT/PID maps to one buy type only — register separate entries for eFTD and eFTT-Core.</div>
           </li>
           <li>
             <span class="sum-sec-num n7">7</span>
@@ -901,7 +965,7 @@
           </li>
           <li>
             <span class="history-date">2026-06-19</span>
-            <span class="history-entry">CSS cleanup, GitHub Pages deploy, password-protected Summary section added (password: 1234, lock icon in footer). Section 3 updated: Fraud Policy added high-eFTD-no-trade bullet; Restricted Markets updated to 13 countries (added AU, ID, HK; removed UK); Attribution Rules added eFTT last-click.</span>
+            <span class="history-entry">CSS cleanup, GitHub Pages deploy, password-protected Summary section added (password: 1234, lock icon in footer). Section 3 updated: Fraud Policy added high-eFTD-no-trade bullet; Restricted Markets updated to 13 countries (added AU, ID, HK; removed UK); Attribution Rules added eFTT-Core last-click.</span>
           </li>
           <li>
             <span class="history-date">2026-06-19</span>
@@ -927,6 +991,10 @@
             <span class="history-date">2026-06-22</span>
             <span class="history-entry">Section 4 warning text updated: clarified that "App" refers to the AppsFlyer app setting (BYBIT or EU), not the vendor's own application.</span>
           </li>
+          <li>
+            <span class="history-date">2026-07-13</span>
+            <span class="history-entry">Payout table updated from source doc: Korea $160→$200 (iOS only), MENA $45→$50, Turkey $35→$40, Africa $5→$6, India IN→IN/BD $10→$20, Vietnam $60→$40. New region added: Latam (AR, VE, MX, CO, BO) at $10. Now 12 regions.</span>
+          </li>
         </ul>
       </div>
 
@@ -936,21 +1004,23 @@
 
   <!-- AGREE MODAL -->
   <div class="agree-overlay" id="agreeOverlay">
-    <div class="agree-box" style="width:680px;">
+    <div class="agree-box" style="width:580px;">
       <div class="agree-box-title">Record Your Agreement</div>
-      <div class="agree-box-sub">Fill in your details below and submit, then click <strong style="color:#4ade80;">Done</strong> to continue.</div>
-      <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLSeRUY5ThT1KLf9bWJZxI9Kcf-zT4lGNPKnD-tbD1yLVFirEaw/viewform?embedded=true"
-        width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0"
-        style="border-radius:8px; margin-bottom:14px; display:block;">
-        Loading…
-      </iframe>
-      <label style="display:flex;align-items:center;gap:10px;margin-bottom:14px;cursor:pointer;user-select:none;">
-        <input type="checkbox" id="agreeCheck" onchange="toggleDoneBtn()" style="width:16px;height:16px;accent-color:#4ade80;cursor:pointer;flex-shrink:0;">
-        <span style="font-size:12px;color:#94a3b8;">I confirm I have filled in and submitted the form above</span>
-      </label>
+      <div class="agree-box-sub">Please provide your details to confirm agreement to all terms above.</div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
+        <div>
+          <label style="font-size:11px;color:#94a3b8;margin-bottom:4px;display:block;">Full Name <span style="color:#ef4444;">*</span></label>
+          <input type="text" id="agreeName" placeholder="Your full name" style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #334155;background:#0f1117;color:#e2e8f0;font-size:13px;outline:none;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#334155'">
+        </div>
+        <div>
+          <label style="font-size:11px;color:#94a3b8;margin-bottom:4px;display:block;">Email <span style="color:#ef4444;">*</span></label>
+          <input type="email" id="agreeEmail" placeholder="your@company.com" style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #334155;background:#0f1117;color:#e2e8f0;font-size:13px;outline:none;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#334155'">
+        </div>
+      </div>
+      <div id="agreeError" style="display:none;color:#fca5a5;font-size:11px;margin-bottom:10px;"></div>
+      <div id="agreeSpinner" style="display:none;text-align:center;padding:10px;color:#94a3b8;font-size:12px;">Submitting...</div>
       <div class="agree-actions">
-        <button class="agree-submit" id="agreeDoneBtn" onclick="doneAgreement()" disabled style="opacity:0.35;cursor:not-allowed;">✅ Done — I've submitted</button>
+        <button class="agree-submit" id="agreeDoneBtn" onclick="submitAgreement()">✅ I Agree to All Terms</button>
         <button class="agree-cancel-btn" onclick="closeAgreeModal()">Cancel</button>
       </div>
     </div>
@@ -979,6 +1049,10 @@
   </div>
 
   <script>
+    // ═══ CONFIG ═══
+    // After deploying the Apps Script web app, paste the URL here:
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxIVw-NUPZzBv47ghC3c7TYGY8rSyjIiEDsY6BIQNAgSM9IVR_IuLjZOos2GhAlDeWr-g/exec';
+
     function scrollTo(id) {
       document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -1011,7 +1085,7 @@
       }
     });
 
-    const SECTIONS = ['sec1','sec2','sec3','sec4','sec5','sec6','sec7'];
+    const SECTIONS = ['sec1','sec2','sec3','sec4','sec5','sec6'];
 
     function updateProgress() {
       const offset = document.querySelector('.progress-bar').offsetHeight + 16;
@@ -1029,40 +1103,55 @@
     window.addEventListener('scroll', updateProgress, { passive: true });
     updateProgress();
 
-    function copyPrefill(id, btn) {
-      const text = document.getElementById(id).textContent;
-      if (!text || text === '—') return;
-      navigator.clipboard.writeText(text).then(() => {
-        btn.textContent = 'Copied!';
-        btn.classList.add('copied');
-        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1500);
-      });
-    }
-
+    // ═══ SECTION 3: AGREEMENT ═══
     function openAgreeModal() {
-      document.getElementById('agreeCheck').checked = false;
-      const btn = document.getElementById('agreeDoneBtn');
-      btn.disabled = true;
-      btn.style.opacity = '0.35';
-      btn.style.cursor = 'not-allowed';
+      document.getElementById('agreeName').value = '';
+      document.getElementById('agreeEmail').value = '';
+      document.getElementById('agreeError').style.display = 'none';
+      document.getElementById('agreeSpinner').style.display = 'none';
+      document.getElementById('agreeDoneBtn').style.display = '';
       document.getElementById('agreeOverlay').classList.add('show');
-    }
-
-    function toggleDoneBtn() {
-      const checked = document.getElementById('agreeCheck').checked;
-      const btn = document.getElementById('agreeDoneBtn');
-      btn.disabled = !checked;
-      btn.style.opacity = checked ? '1' : '0.35';
-      btn.style.cursor = checked ? 'pointer' : 'not-allowed';
+      setTimeout(() => document.getElementById('agreeName').focus(), 100);
     }
 
     function closeAgreeModal() {
       document.getElementById('agreeOverlay').classList.remove('show');
     }
 
-    function doneAgreement() {
-      closeAgreeModal();
+    async function submitAgreement() {
+      const name = document.getElementById('agreeName').value.trim();
+      const email = document.getElementById('agreeEmail').value.trim();
+      const errEl = document.getElementById('agreeError');
+      
+      if (!name || !email) {
+        errEl.textContent = 'Please fill in both fields.';
+        errEl.style.display = 'block';
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errEl.textContent = 'Please enter a valid email address.';
+        errEl.style.display = 'block';
+        return;
+      }
 
+      errEl.style.display = 'none';
+      document.getElementById('agreeDoneBtn').style.display = 'none';
+      document.getElementById('agreeSpinner').style.display = 'block';
+
+      // Submit to backend
+      if (SCRIPT_URL) {
+        try {
+          await fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain' },
+            body: JSON.stringify({ action: 'agreement', name, email, ua: navigator.userAgent })
+          });
+        } catch (e) { /* no-cors won't give response, that's ok */ }
+      }
+
+      // Complete the agreement UI
+      closeAgreeModal();
       const now = new Date();
       const dateStr = now.toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' })
                     + ' · ' + now.toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit' });
@@ -1080,17 +1169,174 @@
       btn.style.cursor = 'default';
 
       agreed = true;
-      ['sec4','sec5','sec6','sec7'].forEach(id => {
+      ['sec4','sec5','sec6'].forEach(id => {
         document.getElementById(id).classList.remove('sec-locked');
       });
       document.getElementById('sec3-barrier').classList.add('unlocked');
-
     }
 
     document.getElementById('agreeOverlay').addEventListener('click', function(e) {
       if (e.target === this) closeAgreeModal();
     });
 
+    // ═══ SECTION 7: REGISTRATION ═══
+    const MAX_ENTRIES = 5;
+    let entryCount = 0;
+
+    function createEntryHTML(idx) {
+      return `
+        <div class="reg-entry" id="regEntry${idx}" style="background:#0d1825;border:1px solid #1e3a5f;border-radius:10px;padding:16px;margin-bottom:12px;position:relative;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+            <span style="font-size:11px;font-weight:700;color:#60a5fa;text-transform:uppercase;letter-spacing:0.5px;">Entry ${idx + 1}</span>
+            ${idx > 0 ? `<button onclick="removeEntry(${idx})" style="background:none;border:none;color:#64748b;font-size:16px;cursor:pointer;padding:2px 6px;border-radius:4px;transition:color 0.2s;" onmouseover="this.style.color='#fca5a5'" onmouseout="this.style.color='#64748b'" title="Remove">✕</button>` : ''}
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="font-size:11px;color:#94a3b8;margin-bottom:5px;display:block;font-weight:600;">Account Name / ID <span style="color:#ef4444;">*</span></label>
+            <input type="text" id="regName${idx}" placeholder="e.g. mycompany_afprt_01" style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #334155;background:#0f1117;color:#e2e8f0;font-size:13px;outline:none;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#334155'">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+            <div>
+              <label style="font-size:11px;color:#94a3b8;margin-bottom:5px;display:block;font-weight:600;">Account Type <span style="color:#ef4444;">*</span></label>
+              <select id="regType${idx}" style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #334155;background:#0f1117;color:#e2e8f0;font-size:13px;outline:none;cursor:pointer;">
+                <option value="" disabled selected>Select...</option>
+                <option value="AFPRT">AFPRT</option>
+                <option value="PID">PID</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:11px;color:#94a3b8;margin-bottom:5px;display:block;font-weight:600;">Buy Type <span style="color:#ef4444;">*</span></label>
+              <select id="regBuy${idx}" style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #334155;background:#0f1117;color:#e2e8f0;font-size:13px;outline:none;cursor:pointer;">
+                <option value="" disabled selected>Select...</option>
+                <option value="eFTD">eFTD</option>
+                <option value="eFTT">eFTT-Core</option>
+              </select>
+            </div>
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="font-size:11px;color:#94a3b8;margin-bottom:8px;display:block;font-weight:600;">Account Ownership <span style="color:#ef4444;">*</span></label>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px 12px;border-radius:6px;border:1px solid #334155;background:#0f1117;">
+                <input type="radio" name="regOwn${idx}" value="owned" onchange="toggleLease(${idx})" style="width:14px;height:14px;accent-color:#4ade80;cursor:pointer;">
+                <span style="font-size:11px;color:#e2e8f0;">Owned by IO's submission company</span>
+              </label>
+              <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px 12px;border-radius:6px;border:1px solid #334155;background:#0f1117;">
+                <input type="radio" name="regOwn${idx}" value="leased" onchange="toggleLease(${idx})" style="width:14px;height:14px;accent-color:#fcd34d;cursor:pointer;">
+                <span style="font-size:11px;color:#e2e8f0;">Leased from another company</span>
+              </label>
+            </div>
+          </div>
+          <div id="leaseWrap${idx}" style="display:none;">
+            <label style="font-size:11px;color:#fcd34d;margin-bottom:5px;display:block;font-weight:600;">Company leased from <span style="color:#ef4444;">*</span></label>
+            <input type="text" id="regLease${idx}" placeholder="Company name" style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #92400e;background:#1a0f00;color:#e2e8f0;font-size:13px;outline:none;">
+          </div>
+        </div>
+      `;
+    }
+
+    function addEntry() {
+      if (entryCount >= MAX_ENTRIES) return;
+      const container = document.getElementById('regEntries');
+      const div = document.createElement('div');
+      div.innerHTML = createEntryHTML(entryCount);
+      container.appendChild(div.firstElementChild);
+      entryCount++;
+      updateAddBtn();
+    }
+
+    function removeEntry(idx) {
+      const el = document.getElementById('regEntry' + idx);
+      if (el) el.remove();
+      // Re-index remaining entries visually (keep IDs stable for simplicity)
+      updateAddBtn();
+    }
+
+    function updateAddBtn() {
+      const btn = document.getElementById('addEntryBtn');
+      const remaining = document.querySelectorAll('.reg-entry');
+      if (remaining.length >= MAX_ENTRIES) {
+        btn.style.display = 'none';
+      } else {
+        btn.style.display = '';
+        btn.textContent = `+ Add Another Entry (${remaining.length}/${MAX_ENTRIES})`;
+      }
+    }
+
+    function toggleLease(idx) {
+      const leased = document.querySelector(`input[name="regOwn${idx}"][value="leased"]`);
+      const wrap = document.getElementById('leaseWrap' + idx);
+      if (leased && wrap) wrap.style.display = leased.checked ? 'block' : 'none';
+    }
+
+    async function submitRegistration() {
+      const entries = document.querySelectorAll('.reg-entry');
+      const email = document.getElementById('regEmail').value.trim();
+      const errEl = document.getElementById('regError');
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showRegError('Please enter a valid email.'); return;
+      }
+      if (entries.length === 0) {
+        showRegError('Please add at least one entry.'); return;
+      }
+
+      // Validate each entry
+      const data = [];
+      for (const entry of entries) {
+        const idx = entry.id.replace('regEntry', '');
+        const name = document.getElementById('regName' + idx)?.value.trim();
+        const type = document.getElementById('regType' + idx)?.value;
+        const buy = document.getElementById('regBuy' + idx)?.value;
+        const ownEl = document.querySelector(`input[name="regOwn${idx}"]:checked`);
+        const lease = document.getElementById('regLease' + idx)?.value.trim();
+
+        if (!name) { showRegError(`Entry ${parseInt(idx)+1}: Account Name is required.`); return; }
+        if (!type) { showRegError(`Entry ${parseInt(idx)+1}: Account Type is required.`); return; }
+        if (!buy) { showRegError(`Entry ${parseInt(idx)+1}: Buy Type is required.`); return; }
+        if (!ownEl) { showRegError(`Entry ${parseInt(idx)+1}: Ownership is required.`); return; }
+        if (ownEl.value === 'leased' && !lease) { showRegError(`Entry ${parseInt(idx)+1}: Please enter the leasing company name.`); return; }
+
+        data.push({
+          accountName: name,
+          accountType: type,
+          buyType: buy,
+          ownership: ownEl.value === 'owned' ? 'Owned by IO submission company' : 'Leased from another company',
+          leasedFrom: lease || '',
+          email: email
+        });
+      }
+
+      errEl.style.display = 'none';
+      document.getElementById('regSubmitBtn').style.display = 'none';
+      document.getElementById('addEntryBtn').style.display = 'none';
+      document.getElementById('regSpinner').style.display = 'block';
+
+      // Submit each entry
+      if (SCRIPT_URL) {
+        for (const entry of data) {
+          try {
+            await fetch(SCRIPT_URL, {
+              method: 'POST', mode: 'no-cors',
+              headers: { 'Content-Type': 'text/plain' },
+              body: JSON.stringify({ action: 'registration', ...entry })
+            });
+          } catch (e) {}
+        }
+      }
+
+      document.getElementById('regSpinner').style.display = 'none';
+      document.getElementById('regSuccess').style.display = 'block';
+    }
+
+    function showRegError(msg) {
+      const el = document.getElementById('regError');
+      el.textContent = msg;
+      el.style.display = 'block';
+    }
+
+    // Initialize with 1 entry
+    addEntry();
+
+    // ═══ PASSWORD / SUMMARY ═══
     function openPw() {
       document.getElementById('pwOverlay').classList.add('show');
       setTimeout(() => document.getElementById('pwInput').focus(), 50);
@@ -1119,10 +1365,11 @@
     }
 
     document.addEventListener('keydown', e => {
-      if (e.key === 'Enter' && document.getElementById('pwOverlay').classList.contains('show')) {
-        checkPw();
+      if (e.key === 'Enter') {
+        if (document.getElementById('pwOverlay').classList.contains('show')) checkPw();
+        if (document.getElementById('agreeOverlay').classList.contains('show')) submitAgreement();
       }
-      if (e.key === 'Escape') closePw();
+      if (e.key === 'Escape') { closePw(); closeAgreeModal(); }
     });
 
     document.getElementById('pwOverlay').addEventListener('click', function(e) {
